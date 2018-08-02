@@ -1,0 +1,17 @@
+[
+  {
+    "motawef": false,
+    "name": "Gamal",
+    "username": "Gamal",
+    "age": 32,
+    "mobile": "05012345678"
+  },
+  {
+    "motawef": true,
+    "name": "Ahmed",
+    "username": "Ahmed",
+    "age": 28,
+    "mobile": "2143245453"
+  }
+
+]

@@ -1,38 +1,98 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, I18nManager } from 'react-native'
+import {
+  Text,
+  View,
+  ScrollView,
+  I18nManager,
+  StyleSheet,
+  Alert
+} from 'react-native'
 import I18n from 'ex-react-native-i18n'
 import { Util } from 'expo'
-// === Local imports ===
-// import styles from './HomeScreenStyles'
-
-// === Components ===
+import { BarCodeScanner, Permissions } from 'expo'
+import Button from '../../Components/PrimeryButton'
+import styles from './HomeScreenStyles'
 
 I18nManager.allowRTL(true)
 
 class HomeScreen extends Component {
   state = {
-    isRTL: I18nManager.isRTL
+    hasCameraPermission: null,
+    show: false
   }
 
-  componentDidMount () {
-    I18n.initAsync()
-  }
-
-  _onDirectionChange = () => {
-    I18nManager.forceRTL(!this.state.isRTL)
-    Util.reload()
-    this.setState({ isRTL: !this.state.isRTL })
+  async componentWillMount () {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA)
+    this.setState({ hasCameraPermission: status === 'granted' })
   }
 
   render () {
-    return (
-      <ScrollView horizontal={false}>
-        <View>
-          <Text onPress={this._onDirectionChange}>
-            {I18n.t('hi')}
-          </Text>
+    const { hasCameraPermission } = this.state
+
+    if (hasCameraPermission === null) {
+      return <Text>Requesting for camera permission</Text>
+    } else if (hasCameraPermission === false) {
+      return <Text>No access to camera</Text>
+    } else {
+      return (
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {this.state.show === false
+            ? <Text
+              style={{ fontSize: 30, color: 'red' }}
+              onPress={() => this.setState({ show: true })}
+              >
+                Scaner
+              </Text>
+            : <View style={StyleSheet.absoluteFill}>
+
+              <BarCodeScanner
+                onBarCodeRead={this._handleBarCodeRead}
+                style={{ flex: 1, alignSelf: 'stretch' }}
+                />
+              <Button
+                title='cancel'
+                containerStyle={{
+                  position: 'absolute',
+                  right: 20,
+                  left: 20,
+                  bottom: 40,
+                  backgroundColor: 'red'
+                }}
+                onPress={() => this.setState({ show: false })}
+                />
+
+              {/* <Text
+                style={{ fontSize: 25 }}
+                onPress={() => this.setState({ show: false })}
+                >
+                  Back
+                </Text> */}
+
+            </View>}
         </View>
-      </ScrollView>
+      )
+    }
+  }
+
+  _handleBarCodeRead = ({ type, data }) => {
+    Alert.alert(
+      'Alert ',
+      `Bar code with type ${type} and data ${data} has been scanned!`,
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+        { text: 'OK', onPress: () => this.setState({ show: false }) }
+      ],
+      { cancelable: false }
     )
   }
 }

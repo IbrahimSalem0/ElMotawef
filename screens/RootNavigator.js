@@ -3,31 +3,32 @@ import { View } from 'react-native'
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 
 import HomeScreen from './HomeScreen'
+import LoginScreen from './LoginScreen'
 
 const AppStack = createStackNavigator({
   Home: {
-    screen: HomeScreen
-    // navigationOptions: {
-    //   headerTitle: I18n.t('Home')
-    // }
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home'
+    }
   }
 })
 
 const AuthStack = createStackNavigator({
-  LoginScreen: {
-    screen: HomeScreen,
+  Login: {
+    screen: LoginScreen,
     navigationOptions: {
-      // headerTitle: I18n.t('Login')
+      header: null
     }
   }
 })
 
 export default createSwitchNavigator(
   {
-    App: AppStack,
-    Auth: AuthStack
+    Auth: AuthStack,
+    App: AppStack
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }
 )
