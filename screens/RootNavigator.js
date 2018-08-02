@@ -5,6 +5,7 @@ import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 import HomeScreen from './HomeScreen'
 import MotawefHomeScreen from './MotawefHomeScreen'
 import LoginScreen from './LoginScreen'
+import GroupListScreen from './GroupList'
 
 const AppStack = createStackNavigator({
   Home: {
@@ -13,6 +14,12 @@ const AppStack = createStackNavigator({
       headerTitle: 'Home'
     }
   },
+              GroupList: {
+                screen: GroupListScreen,
+                navigationOptions: {
+                  headerTitle: 'Home'
+                }
+              },
   MotawefHome: {
     screen: MotawefHomeScreen,
     navigationOptions: {
