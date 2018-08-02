@@ -72,23 +72,22 @@ export default class LoginScreen extends Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
-        <LinearGradient
-          style={[styles.LinerGradientStyle]}
-          start={{ x: 4.0, y: 1.0 }}
-          colors={['#00b894', '#00b894', '#00b894']}
-        >
-          <Image
+    
+          {/* <Image
             source={require('../../Images/mecca.png')}
             style={styles.Image}
             resizeMode='contain'
-          />
+          /> */}
+          {/* <Text style={styles.Title} >
+            Ahdaa 
+          </Text> */}
           <View style={styles.content}>
 
             <Input
               placeholder='User Name'
               containerStyle={styles.usernameStyle}
               onChangeText={username => this.setState({ username })}
-              placeholderTextColor='white'
+              // placeholderTextColor='white'
               style='white'
             />
             <Input
@@ -96,8 +95,6 @@ export default class LoginScreen extends Component {
               containerStyle={styles.passwordStyle}
               onChangeText={password => this.setState({ password })}
               secureTextEntry
-              placeholderTextColor='white'
-              style='white'
             />
             <Button
               title='Sign in'
@@ -106,7 +103,6 @@ export default class LoginScreen extends Component {
               onPress={this._signin}
             />
           </View>
-        </LinearGradient>
       </ScrollView>
     )
   }
