@@ -47,6 +47,7 @@ class HomeScreen extends Component {
                 style={styles.button}
                 raised
                 onPress={() => this.setState({ show: true })}
+                style={{alignSelf: 'stretch', marginTop: 30}}
                 >
                   Scan
                 </Button>
@@ -59,16 +60,18 @@ class HomeScreen extends Component {
                 style={{ flex: 1, alignSelf: 'stretch' }}
                 />
               <Button
-                title='cancel'
-                containerStyle={{
+                style={{
                   position: 'absolute',
                   right: 20,
                   left: 20,
                   bottom: 40,
                   backgroundColor: 'red'
                 }}
+                color = 'white'
                 onPress={() => this.setState({ show: false })}
-                />
+                >
+                cancel
+                </Button>
 
               {/* <Text
                 style={{ fontSize: 25 }}

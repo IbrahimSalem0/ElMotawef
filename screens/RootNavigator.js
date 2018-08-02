@@ -9,6 +9,12 @@ import LoginScreen from './LoginScreen'
 import GroupListScreen from './GroupList'
 
 const AppStack = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home'
+    }
+  },
   Details: {
     screen: Details,
     navigationOptions: {
@@ -47,6 +53,6 @@ export default createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }
 )
