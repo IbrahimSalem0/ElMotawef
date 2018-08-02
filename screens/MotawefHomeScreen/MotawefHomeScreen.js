@@ -1,18 +1,34 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import I18n from 'ex-react-native-i18n'
 import { Util } from 'expo'
-
-// === Local imports ===
+import { Button } from 'react-native-paper'
+import CodeScanner from '../../Components/CodeScanner'
 import styles from './MotawefHomeScreenStyles'
 
-// === Components ===
-
+const { container, button } = styles
 class HomeScreen extends Component {
-  state = {}
-
+  state = {
+    show: false
+  }
   render () {
-    return <View />
+    return this.state.show
+      ? <CodeScanner />
+      : <View style={container}>
+        <Image
+          source={require('../../Images/qr-code.png')}
+          style={styles.Image}
+          resizeMode='contain'
+          />
+        <Button
+          primary
+          style={button}
+          raised
+          onPress={() => this.setState({ show: !this.state.show })}
+          >
+            Add
+          </Button>
+      </View>
   }
 }
 

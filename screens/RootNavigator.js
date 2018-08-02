@@ -7,14 +7,14 @@ import MotawefHomeScreen from './MotawefHomeScreen'
 import LoginScreen from './LoginScreen'
 
 const AppStack = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
+  MotawefHome: {
+    screen: MotawefHomeScreen,
     navigationOptions: {
       headerTitle: 'Home'
     }
   },
-  MotawefHome: {
-    screen: MotawefHomeScreen,
+  Home: {
+    screen: HomeScreen,
     navigationOptions: {
       headerTitle: 'Home'
     }
@@ -36,6 +36,6 @@ export default createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 )
