@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Image, I18nManager, StyleSheet, Alert } from 'react-native'
+import { Text, View, Image, StyleSheet, Alert } from 'react-native'
 import { Button } from 'react-native-paper'
-import I18n from 'ex-react-native-i18n'
-import { Util } from 'expo'
 import { BarCodeScanner, Permissions } from 'expo'
 import styles from './HomeScreenStyles'
-
-I18nManager.allowRTL(true)
 
 class HomeScreen extends Component {
   state = {
@@ -39,7 +35,7 @@ class HomeScreen extends Component {
             ? <View style={styles.container}>
               <Image
                 source={require('../../Images/qr-code.png')}
-                // style={styles.Image}
+                  // style={styles.Image}
                 resizeMode='contain'
                 />
               <Button
