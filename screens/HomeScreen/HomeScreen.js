@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
-import {
-  Text,
-  View,
-  ScrollView,
-  I18nManager,
-  StyleSheet,
-  Alert
-} from 'react-native'
+import { Text, View, Image, I18nManager, StyleSheet, Alert } from 'react-native'
+import { Button } from 'react-native-paper'
 import I18n from 'ex-react-native-i18n'
 import { Util } from 'expo'
 import { BarCodeScanner, Permissions } from 'expo'
-import Button from '../../Components/PrimeryButton'
 import styles from './HomeScreenStyles'
 
 I18nManager.allowRTL(true)
@@ -43,12 +36,22 @@ class HomeScreen extends Component {
           }}
         >
           {this.state.show === false
-            ? <Text
-              style={{ fontSize: 30, color: 'red' }}
-              onPress={() => this.setState({ show: true })}
-              >
-                Scaner
-              </Text>
+            ? <View style={styles.container}>
+              <Image
+                source={require('../../Images/qr-code.png')}
+                // style={styles.Image}
+                resizeMode='contain'
+                />
+              <Button
+                primary
+                style={styles.button}
+                raised
+                onPress={() => this.setState({ show: true })}
+                >
+                  Scan
+                </Button>
+
+            </View>
             : <View style={StyleSheet.absoluteFill}>
 
               <BarCodeScanner

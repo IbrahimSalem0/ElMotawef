@@ -4,9 +4,16 @@ import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 
 import HomeScreen from './HomeScreen'
 import MotawefHomeScreen from './MotawefHomeScreen'
+import Details from './Details'
 import LoginScreen from './LoginScreen'
 
 const AppStack = createStackNavigator({
+  Details: {
+    screen: Details,
+    navigationOptions: {
+      headerTitle: 'Details'
+    }
+  },
   MotawefHome: {
     screen: MotawefHomeScreen,
     navigationOptions: {

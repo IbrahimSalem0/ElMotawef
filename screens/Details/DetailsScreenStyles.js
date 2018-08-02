@@ -6,8 +6,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
-  button: {
-    margin: 50,
-    width: '60%'
+  image: {
+    width: '30%'
   }
 })
