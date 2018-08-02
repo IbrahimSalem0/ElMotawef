@@ -14,17 +14,20 @@ const AppStack = createStackNavigator({
       headerTitle: 'Home'
     }
   },
-              GroupList: {
-                screen: GroupListScreen,
-                navigationOptions: {
-                  headerTitle: 'Home'
-                }
-              },
   MotawefHome: {
     screen: MotawefHomeScreen,
     navigationOptions: {
       headerTitle: 'Home'
     }
+  },
+  GroupList: {
+    screen: GroupListScreen,
+    navigationOptions: {
+      headerTitle: 'Home'
+    }
+  },
+  MotawefHome: {
+    screen: MotawefHomeScreen
   }
 })
 
@@ -43,6 +46,6 @@ export default createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 )
