@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen'
 import MotawefHomeScreen from './MotawefHomeScreen'
 import Details from './Details'
 import LoginScreen from './LoginScreen'
+import GroupListScreen from './GroupList'
 
 const AppStack = createStackNavigator({
   Details: {
@@ -20,11 +21,14 @@ const AppStack = createStackNavigator({
       headerTitle: 'Home'
     }
   },
-  Home: {
-    screen: HomeScreen,
+  GroupList: {
+    screen: GroupListScreen,
     navigationOptions: {
       headerTitle: 'Home'
     }
+  },
+  MotawefHome: {
+    screen: MotawefHomeScreen
   }
 })
 
