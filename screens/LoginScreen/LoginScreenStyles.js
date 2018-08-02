@@ -5,12 +5,13 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#f9f9f9'
+    backgroundColor: 'transparent'
   },
   contentContainerStyle: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginHorizontal: 25
   },
   LinerGradientStyle: {
     flex: 1,
@@ -18,9 +19,9 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   Image: {
-    height: width * 0.25,
-    width: width * 0.25,
-    marginTop: height * 0.2
+    height: width * 0.4,
+    width: width * 0.4,
+    marginTop: height * 0.06
   },
   Title:{
     textAlign: 'center',
@@ -65,7 +66,7 @@ export default StyleSheet.create({
     backgroundColor: '#FE979C',
     marginHorizontal: 10,
     borderRadius: 3,
-    marginTop: 60,
+    marginTop: 100,
     borderRadius: 25
   },
   textButton: {

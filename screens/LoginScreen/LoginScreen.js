@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
-import {
-  Text,
-  View,
-  ScrollView,
-  I18nManager,
-  Image,
-} from 'react-native'
+import { Text, View, ScrollView, I18nManager, Image, ImageBackground } from 'react-native'
 import I18n from 'ex-react-native-i18n'
 import { Util } from 'expo'
 import { LinearGradient } from 'expo'
 import Input from '../../Components/TextInput'
-import Button from '../../Components/PrimeryButton'
+// import Button from '../../Components/PrimeryButton'
 import DATA from '../../Data/Data.json'
+import { TextInput, Button } from 'react-native-paper'
 import styles from './LoginScreenStyles'
 
-I18nManager.allowRTL(true)
 
 export default class LoginScreen extends Component {
   state = {}
@@ -28,82 +22,63 @@ export default class LoginScreen extends Component {
     loading: false
   }
 
-  componentDidMount () {
-    I18n.initAsync()
-  }
-
-  _onDirectionChange = () => {
-    I18nManager.forceRTL(!this.state.isRTL)
-    Util.reload()
-    this.setState({ isRTL: !this.state.isRTL })
-  }
 
   _signin = () => {
-    const { username, password } = this.state;
+    const { username, password } = this.state
     if (!this.state.username || !this.state.password) {
-        return alert('enter your data')
-      }
-    const isExist = DATA.map(item => item.username === username ? true : false )
-    if(isExist && username === 'Gamal' && password=== '111') {
-      this.props.navigation.navigate('Home', {screen: 'haag'})
-    } else  if(isExist && username === 'Ahmed' && password=== '222')  {
-      this.props.navigation.navigate('MotawefHome', {screen: 'haag'})
-    }else{
+      return alert('enter your data')
+    }
+    const isExist = DATA.map(item => item.username === username)
+    if (isExist && username === 'Gamal' && password === '111') {
+      this.props.navigation.navigate('Home', { screen: 'haag' })
+    } else if (isExist && username === 'Ahmed' && password === '222') {
+      this.props.navigation.navigate('MotawefHome', { screen: 'haag' })
+    } else {
       alert('username or password wrong')
     }
-  
-    // if (!this.state.username || !this.state.password) {
-    //   return alert('enter your data')
-    // }
-    // if(this.state.username === 'Gamal' || this.state.username === 'Ahmed'){
-    //   if(this.state.username === username === 'Gamal'){
-    //     this.props.navigation.navigate('Home', {screen: 'haag'})
-    //   }else{
-    //     this.props.navigation.navigate('Home', {screen: 'dffd'})
-    //   }
-
-    // }
   }
 
   render () {
     return (
+      <ImageBackground style={{width: '100%', height: '100%'}} source={'../../Images/Bg.png'} >
       <ScrollView
         horizontal={false}
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
-    
-          {/* <Image
-            source={require('../../Images/mecca.png')}
-            style={styles.Image}
-            resizeMode='contain'
-          /> */}
-          {/* <Text style={styles.Title} >
-            Ahdaa 
-          </Text> */}
-          <View style={styles.content}>
 
-            <Input
-              placeholder='User Name'
-              containerStyle={styles.usernameStyle}
-              onChangeText={username => this.setState({ username })}
-              // placeholderTextColor='white'
-              style='white'
-            />
-            <Input
-              placeholder='Password'
-              containerStyle={styles.passwordStyle}
-              onChangeText={password => this.setState({ password })}
-              secureTextEntry
-            />
-            <Button
-              title='Sign in'
-              containerStyle={styles.signinStyle}
-              titleStyle={styles.textButton}
-              onPress={this._signin}
-            />
-          </View>
+        <Image
+          source={require('../../Images/logo.png')}
+          style={styles.Image}
+          resizeMode='contain'
+        />
+
+        <View style={styles.content}>
+
+          <TextInput
+            label='User Name'
+            containerStyle={styles.usernameStyle}
+            onChangeText={username => this.setState({ username })}
+            // placeholderTextColor='white'
+            style='white'
+          />
+          <TextInput
+            label='Password'
+            containerStyle={styles.passwordStyle}
+            onChangeText={password => this.setState({ password })}
+            secureTextEntry
+          />
+          <Button
+            raised
+            primary
+            onPress={this._signin}
+            style={{ marginHorizontal: 0 , marginTop: 50}} 
+          >
+            Sign in
+          </Button>
+        </View>
       </ScrollView>
+      </ImageBackground>
     )
   }
 }
