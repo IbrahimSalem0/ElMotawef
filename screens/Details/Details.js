@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Image, View } from 'react-native'
-
+import { Image, View, Text } from 'react-native'
 import styles from './DetailsScreenStyles'
 
 class Details extends Component {
@@ -11,11 +10,22 @@ class Details extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Image
-          source={{ uri: 'https://image.flaticon.com/icons/svg/145/145842.svg' }}
-          style={styles.image}
-          resizeMode='contain'
-        />
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://media.istockphoto.com/photos/smiling-south-asian-bearded-male-picture-id464565934?k=6&m=464565934&s=612x612&w=0&h=tjPXYvtWdY4TzsZqhK4VZprNyE-lRfd_oQbdHSNO8k4='
+            }}
+            resizeMode='cover'
+          />
+        </View>
+        <View style={styles.details}>
+          <Text>Name: Ahmed</Text>
+          <Text>Name: Ahmed</Text>
+          <Text>Name: Ahmed</Text>
+          <Text>Name: Ahmed</Text>
+          <Text>Name: Ahmed</Text>
+        </View>
       </View>
     )
   }
