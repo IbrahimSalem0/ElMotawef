@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, I18nManager } from 'react-native'
-import I18n from 'ex-react-native-i18n'
+import {
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  I18nManager
+} from 'react-native'
+// import I18n from 'ex-react-native-i18n'
 import { Util } from 'expo'
 // === Local imports ===
-// import styles from './HomeScreenStyles'
+import styles from './HomeScreenStyles'
 
 // === Components ===
 
@@ -11,28 +18,65 @@ I18nManager.allowRTL(true)
 
 class HomeScreen extends Component {
   state = {
-    isRTL: I18nManager.isRTL
+    // isRTL: I18nManager.isRTL
   }
+  _renderRow = data => {
+    return (
+      <TouchableOpacity
+        style={styles.item}
+        key={data.title}
+        // onPress={() => this.props.navigation.navigate()}
+      >
+        <Image source={data.image} style={styles.image} />
+        <Text style={styles.title}>
+          {data.title}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
+  // componentDidMount () {
+  //   I18n.initAsync()
+  // }
 
-  componentDidMount () {
-    I18n.initAsync()
-  }
-
-  _onDirectionChange = () => {
-    I18nManager.forceRTL(!this.state.isRTL)
-    Util.reload()
-    this.setState({ isRTL: !this.state.isRTL })
-  }
+  // _onDirectionChange = () => {
+  //   I18nManager.forceRTL(!this.state.isRTL)
+  //   Util.reload()
+  //   this.setState({ isRTL: !this.state.isRTL })
+  // }
 
   render () {
+    const {
+      homeContainer,
+      homeHeaderText,
+      homeFooterText,
+      homeList,
+      contentList
+    } = styles
     return (
-      <ScrollView horizontal={false}>
-        <View>
-          <Text onPress={this._onDirectionChange}>
-            {I18n.t('hi')}
+      <View style={homeContainer}>
+        <View style={homeHeaderText}>
+          <Text onPress={() => {}}>
+            hi
           </Text>
         </View>
-      </ScrollView>
+        <View style={homeList}>
+          <FlatList
+            renderItem={this._renderRow}
+            data={[
+              { title: 'some title here', image: '' },
+              { title: 'lets make this one really long', image: '' }
+            ]}
+            contentContainerStyle={contentList}
+            removeClippedSubviews={false}
+            // numColumns={2}
+          />
+        </View>
+        <View style={homeFooterText}>
+          <Text onPress={() => {}}>
+            hi
+          </Text>
+        </View>
+      </View>
     )
   }
 }

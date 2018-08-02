@@ -1,15 +1,15 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text } from 'react-native'
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 
 import HomeScreen from './HomeScreen'
 
 const AppStack = createStackNavigator({
   Home: {
-    screen: HomeScreen
-    // navigationOptions: {
-    //   headerTitle: I18n.t('Home')
-    // }
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: <Text>Motawef</Text>
+    }
   }
 })
 
