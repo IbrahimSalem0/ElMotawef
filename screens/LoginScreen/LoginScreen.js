@@ -47,7 +47,7 @@ export default class LoginScreen extends Component {
     if(isExist && username === 'Gamal' && password=== '111') {
       this.props.navigation.navigate('Home', {screen: 'haag'})
     } else  if(isExist && username === 'Ahmed' && password=== '222')  {
-     alert('Motawef')
+      this.props.navigation.navigate('MotawefHome', {screen: 'haag'})
     }else{
       alert('username or password wrong')
     }

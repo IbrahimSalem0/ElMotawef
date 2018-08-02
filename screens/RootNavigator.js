@@ -3,11 +3,18 @@ import { View } from 'react-native'
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 
 import HomeScreen from './HomeScreen'
+import MotawefHomeScreen from './MotawefHomeScreen'
 import LoginScreen from './LoginScreen'
 
 const AppStack = createStackNavigator({
   Home: {
     screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home'
+    }
+  },
+  MotawefHome: {
+    screen: MotawefHomeScreen,
     navigationOptions: {
       headerTitle: 'Home'
     }
